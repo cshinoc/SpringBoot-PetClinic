@@ -1,4 +1,4 @@
-package caseychen.springboot.springbootpetclinic;
+package springbootpetclinic;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
