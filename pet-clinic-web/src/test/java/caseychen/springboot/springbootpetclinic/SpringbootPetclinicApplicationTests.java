@@ -1,4 +1,4 @@
-package springbootpetclinic;
+package caseychen.springboot.springbootpetclinic;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -12,5 +12,4 @@ public class SpringbootPetclinicApplicationTests {
     @Test
     public void contextLoads() {
     }
-
 }
