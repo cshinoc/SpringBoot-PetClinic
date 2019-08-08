@@ -14,7 +14,7 @@
     </parent>
     <groupId>caseychen.springboot</groupId>
     <artifactId>springboot-petclinic</artifactId>
-    <version>0.0.1</version>
+    <version>0.0.2-SNAPSHOT</version>
     <name>springboot-petclinic</name>
     <description>SpringBoot-PetClinic</description>
 
@@ -42,7 +42,7 @@
 
     <scm>
         <developerConnection>scm:git:https://github.com/cshinoc/SpringBoot-PetClinic</developerConnection>
-      <tag>v0.0.1-SNAPSHOT</tag>
+      <tag>HEAD</tag>
   </scm>
 
 </project>
