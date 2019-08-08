@@ -1,11 +1,11 @@
 package caseychen.springboot.springbootpetclinic.services.map;
 
 import caseychen.springboot.springbootpetclinic.model.Pet;
-import caseychen.springboot.springbootpetclinic.services.CrudService;
+import caseychen.springboot.springbootpetclinic.services.PetService;
 
 import java.util.Set;
 
-public class PetServiceMap extends AbstractMapService<Pet, Long> implements CrudService<Pet, Long> {
+public class PetServiceMap extends AbstractMapService<Pet, Long> implements PetService {
 
     @Override
     public Set<Pet> findAll() {
