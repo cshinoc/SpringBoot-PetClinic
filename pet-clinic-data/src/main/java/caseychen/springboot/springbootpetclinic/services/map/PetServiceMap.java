@@ -2,9 +2,11 @@ package caseychen.springboot.springbootpetclinic.services.map;
 
 import caseychen.springboot.springbootpetclinic.model.Pet;
 import caseychen.springboot.springbootpetclinic.services.PetService;
+import org.springframework.stereotype.Service;
 
 import java.util.Set;
 
+@Service
 public class PetServiceMap extends AbstractMapService<Pet, Long> implements PetService {
 
     @Override
