@@ -1,7 +1,16 @@
 package caseychen.springboot.springbootpetclinic.model;
 
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Table;
+
+@Entity
+@Table
 public class Speciality extends BaseEntity {
 
+
+    @Column(name = "description")
     private String description;
 
     public String getDescription() {
