@@ -1,6 +1,5 @@
 package caseychen.springboot.springbootpetclinic.model;
 
-
 import javax.persistence.Column;
 import javax.persistence.MappedSuperclass;
 

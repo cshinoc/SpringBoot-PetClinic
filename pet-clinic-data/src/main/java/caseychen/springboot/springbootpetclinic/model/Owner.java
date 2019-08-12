@@ -5,7 +5,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 @Entity
-@Table (name = "owners")
+@Table(name = "owners")
 public class Owner extends Person {
 
     @Column(name = "address")
@@ -17,12 +17,8 @@ public class Owner extends Person {
     @Column(name = "telephone")
     private String telephone;
 
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "Owner")
-    private Set<Pet> pets;
-
-    public Owner() {
-        pets = new HashSet<Pet>();
-    }
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "owner")
+    private Set<Pet> pets = new HashSet<>();
 
     public String getAddress() {
         return address;

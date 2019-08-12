@@ -8,6 +8,9 @@ import java.util.Set;
 @Entity
 @Table(name = "pets")
 public class Pet extends BaseEntity{
+    @Column(name = "name")
+    private String Name;
+
     @ManyToOne
     @JoinColumn(name = "type_id")
     private PetType petType;
@@ -19,11 +22,16 @@ public class Pet extends BaseEntity{
     @Column(name = "birth_date")
     private LocalDate birthDate;
 
-    @Column(name = "name")
-    private String Name;
-
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "pet")
     private Set<Visit> visits = new HashSet<Visit>();
+
+    public String getName() {
+        return Name;
+    }
+
+    public void setName(String name) {
+        Name = name;
+    }
 
     public PetType getPetType() {
         return petType;
@@ -47,14 +55,6 @@ public class Pet extends BaseEntity{
 
     public void setBirthDate(LocalDate birthDate) {
         this.birthDate = birthDate;
-    }
-
-    public String getName() {
-        return Name;
-    }
-
-    public void setName(String name) {
-        Name = name;
     }
 
     public Set<Visit> getVisits() {
