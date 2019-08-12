@@ -13,11 +13,15 @@
         <spring-boot.repackage.skip>true</spring-boot.repackage.skip>
     </properties>
 
+    <!-- Lecture 55 Add dependencies after creating module -->
     <dependencies>
+        <!-- Moved from main module -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-data-jpa</artifactId>
         </dependency>
+
+        <!-- Moved H2 db, MySQl connector and Lombok dep from main module here -->
         <dependency>
             <groupId>com.h2database</groupId>
             <artifactId>h2</artifactId>
@@ -33,6 +37,10 @@
             <artifactId>lombok</artifactId>
             <optional>true</optional>
         </dependency>
+
+        <!-- Lecture 55 Copy test dependency here from web modlule add exclusion
+             of JUnit 4 for JUnit in Lecture 189. JUnit comes with Boot
+        -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
@@ -44,24 +52,57 @@
                 </exclusion>
             </exclusions>
         </dependency>
+
+        <!-- Added next 3 in order to upgrade to JUnit 5. Lecture 189 -->
         <dependency>
             <groupId>org.junit.jupiter</groupId>
             <artifactId>junit-jupiter-api</artifactId>
             <scope>test</scope>
         </dependency>
+
         <dependency>
             <groupId>org.junit.jupiter</groupId>
             <artifactId>junit-jupiter-engine</artifactId>
             <scope>test</scope>
         </dependency>
+
+        <!-- Lecture 192 https://mvnrepository.com/artifact/org.mockito/mockito-junit-jupiter -->
+        <dependency>
+            <groupId>org.mockito</groupId>
+            <artifactId>mockito-junit-jupiter</artifactId>
+            <version>2.23.4</version>
+            <scope>test</scope>
+        </dependency>
+
+
     </dependencies>
 
+    <!-- Lecture 55 Copied build plugin here from main POM. Add <execution> params-->
+    <!-- Lecture 189 Changes this section. See code below -->
+    <!-- Lecture 189 Replace with <build> section below to move to JUnit 5
+      -->
+    <!--    <build>-->
+    <!--        <plugins>-->
+    <!--            <plugin>-->
+    <!--                <groupId>org.springframework.boot</groupId>-->
+    <!--                <artifactId>spring-boot-maven-plugin</artifactId>-->
+    <!--                <executions>-->
+    <!--                    <execution>-->
+    <!--                        <goals>-->
+    <!--                            <goal>repackage</goal>-->
+    <!--                        </goals>-->
+    <!--                        <configuration>-->
+    <!--                            <skip>true</skip>-->
+    <!--                        </configuration>-->
+    <!--                    </execution>-->
+    <!--                </executions>-->
+    <!--            </plugin>-->
+    <!--        </plugins>-->
+    <!--    </build>-->
+
+    <!-- New build section from lecture 189 to add surefire plugin -->
     <build>
         <plugins>
-            <plugin>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-maven-plugin</artifactId>
-            </plugin>
             <plugin>
                 <artifactId>maven-surefire-plugin</artifactId>
                 <version>2.22.0</version>
@@ -69,7 +110,7 @@
                     <dependency>
                         <groupId>org.junit.platform</groupId>
                         <artifactId>junit-platform-surefire-provider</artifactId>
-                        <version>${junit-platform.version}</version>
+                        <version>1.3.2</version>  <!-- could use 1.3.2 if this fails -->
                     </dependency>
                 </dependencies>
             </plugin>
