@@ -4,11 +4,13 @@ import caseychen.springboot.springbootpetclinic.model.Speciality;
 import caseychen.springboot.springbootpetclinic.model.Vet;
 import caseychen.springboot.springbootpetclinic.services.SpecialitiesService;
 import caseychen.springboot.springbootpetclinic.services.VetService;
+import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Service;
 
 import java.util.Set;
 
 @Service
+@Profile({"default", "map"})
 public class VetServiceMap extends AbstractMapService<Vet, Long> implements VetService {
 
     private final SpecialitiesService specialitiesService;

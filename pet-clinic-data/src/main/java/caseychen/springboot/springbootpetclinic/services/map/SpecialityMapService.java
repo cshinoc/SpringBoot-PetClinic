@@ -2,11 +2,13 @@ package caseychen.springboot.springbootpetclinic.services.map;
 
 import caseychen.springboot.springbootpetclinic.model.Speciality;
 import caseychen.springboot.springbootpetclinic.services.SpecialitiesService;
+import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Service;
 
 import java.util.Set;
 
 @Service
+@Profile({"default", "map"})
 public class SpecialityMapService extends AbstractMapService<Speciality, Long> implements SpecialitiesService {
     @Override
     public Set<Speciality> findAll() {
