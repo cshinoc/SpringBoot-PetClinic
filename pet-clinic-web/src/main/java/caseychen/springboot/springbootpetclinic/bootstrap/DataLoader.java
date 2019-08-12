@@ -1,10 +1,7 @@
 package caseychen.springboot.springbootpetclinic.bootstrap;
 
 import caseychen.springboot.springbootpetclinic.model.*;
-import caseychen.springboot.springbootpetclinic.services.OwnerService;
-import caseychen.springboot.springbootpetclinic.services.PetTypeService;
-import caseychen.springboot.springbootpetclinic.services.SpecialitiesService;
-import caseychen.springboot.springbootpetclinic.services.VetService;
+import caseychen.springboot.springbootpetclinic.services.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
@@ -18,13 +15,15 @@ public class DataLoader implements CommandLineRunner {
     private final VetService vetService;
     private final PetTypeService petTypeService;
     private final SpecialitiesService specialitiesService;
+    private final VisitService visitService;
 
     @Autowired
-    public DataLoader(OwnerService ownerService, VetService vetService, PetTypeService petTypeService, SpecialitiesService specialitiesService) {
+    public DataLoader(OwnerService ownerService, VetService vetService, PetTypeService petTypeService, SpecialitiesService specialitiesService, VisitService visitService) {
         this.ownerService = ownerService;
         this.vetService = vetService;
         this.petTypeService = petTypeService;
         this.specialitiesService = specialitiesService;
+        this.visitService = visitService;
     }
 
     @Override
@@ -87,9 +86,16 @@ public class DataLoader implements CommandLineRunner {
         flonasPet.setOwner(owner2);
         flonasPet.setBirthDate(LocalDate.now());
         flonasPet.setName("gouzai");
-
+        owner2.getPets().add(flonasPet);
 
         ownerService.save(owner2);
+
+        Visit catVisit = new Visit();
+        catVisit.setPet(flonasPet);
+        catVisit.setDate(LocalDate.now());
+        catVisit.setDescription("Kawahi Juju");
+
+        visitService.save(catVisit);
 
         System.out.println("Loaded Owenrs...");
 
